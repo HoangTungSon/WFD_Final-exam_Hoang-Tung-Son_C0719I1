@@ -1,0 +1,11 @@
+<ul>
+  <li *ngFor="let book of bookList; index as i" [class.completed]="book.read">
+    <div>
+      Id: {{book.id}}
+      <br>
+      {{book.name}}
+    </div>
+
+    <button>delete</button>
+  </li>
+</ul>
