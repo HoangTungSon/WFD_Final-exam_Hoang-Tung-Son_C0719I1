@@ -1,11 +1,14 @@
 <ul>
   <li *ngFor="let book of bookList; index as i" [class.completed]="book.read">
-    <div>
-      Id: {{book.id}}
-      <br>
-      {{book.name}}
-    </div>
-
-    <button>delete</button>
+    Id: {{book.id}}
+    <br>
+    {{book.name}}
+    <br>
+    <button (click)="read(i)">Complete</button>
   </li>
 </ul>
+
+<div>
+  <input type="text" [formControl]="inputControl">
+  <button (click)="addBook()">Add</button>
+</div>

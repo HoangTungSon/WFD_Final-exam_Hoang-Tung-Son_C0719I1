@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {BookService} from '../book.service';
+import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-single-page',
@@ -9,6 +10,7 @@ import {BookService} from '../book.service';
 export class SinglePageComponent implements OnInit {
 
   bookList: IBook[] = [];
+  inputControl = new FormControl();
 
   constructor(private bookService: BookService) {
   }
@@ -23,10 +25,24 @@ export class SinglePageComponent implements OnInit {
     });
   }
 
+  addBook() {
+    const book: IBook = {
+      id: 100 * Math.random(),
+      name: this.inputControl.value,
+      read: true
+    };
+
+    this.bookService.createBook(book).subscribe(next => {
+      this.bookList.unshift(next);
+      this.inputControl.setValue('');
+    });
+
+  }
+
   read(i) {
     const book = this.bookList[i];
-    this.bookService.deleteTodo(todo.id).subscribe(() => {
-      this.todoList = this.todoList.filter(t => t.id !== todo.id);
+    this.bookService.deletebook(book.id).subscribe(() => {
+      this.bookList = this.bookList.filter(t => t.id !== book.id);
     });
   }
 }

@@ -19,4 +19,17 @@ export class BookService {
       map(response => response.filter((book, i) => i < count))
     );
   }
+
+  getBookById(id: number): Observable<IBook> {
+    return this.http.get<IBook>(`${this.API_URL}/${id}`);
+  }
+  createBook(book: IBook): Observable<IBook> {
+    return this.http.post<IBook>(this.API_URL, book);
+  }
+  deletebook(id: number): Observable<any> {
+    return this.http.delete(`${this.API_URL}/${id}`);
+  }
+  updatebook(book: IBook): Observable<IBook> {
+    return this.http.patch<IBook>(`${this.API_URL}/${book.id}`, book);
+  }
 }
