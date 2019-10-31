@@ -41,8 +41,10 @@ export class SinglePageComponent implements OnInit {
 
   read(i) {
     const book = this.bookList[i];
-    this.bookService.deletebook(book.id).subscribe(() => {
-      this.bookList = this.bookList.filter(t => t.id !== book.id);
+    book.read = false;
+    this.bookService.updatebook(book).subscribe(() => {
+      console.log('success');
     });
   }
+
 }

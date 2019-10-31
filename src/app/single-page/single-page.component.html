@@ -1,16 +1,15 @@
-<table>
-  <tr>Reading List</tr>
+<a routerLink="">Home</a>
+<table border="1px" style="width: 7px">
+  <tr align="middle">Reading List</tr>
   <tr *ngFor="let book of bookList; index as i" [class.completed]="book.read">
-    <td>{{book.name}}</td>
-    <td><button (click)="read(i)">Read Again</button></td>
+    <td *ngIf="book.read">{{book.name}}</td>
+    <td *ngIf="book.read"><button (click)="read(i)">Read Again</button></td>
   </tr>
   <tr>
     <td><input type="text" [formControl]="inputControl"></td>
     <td><button (click)="addBook()">Add</button></td>
   </tr>
 </table>
+<a routerLink="/read-books">Completed reading list</a>
 
-<div>
-
-</div>
 

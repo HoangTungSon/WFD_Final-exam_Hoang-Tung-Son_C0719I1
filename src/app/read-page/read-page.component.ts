@@ -25,8 +25,9 @@ export class ReadPageComponent implements OnInit {
 
   readAgain(i) {
     const book = this.bookList[i];
-    this.bookService.deletebook(book.id).subscribe(() => {
-      this.bookList = this.bookList.filter(t => t.id !== book.id);
+    book.read = true;
+    this.bookService.updatebook(book).subscribe(() => {
+      console.log('success');
     });
   }
 

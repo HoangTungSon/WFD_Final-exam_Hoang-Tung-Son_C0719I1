@@ -1,7 +1,9 @@
-<table>
+<a routerLink="">Home</a>
+<table border="1px">
   <tr>Book have been read</tr>
   <tr *ngFor="let book of bookList; index as i" [class.completed]="book.read" >
-    <td>{{book.name}}</td>
-    <td><button (click)="readAgain(i)">Read Again</button></td>
+    <td *ngIf="!book.read">{{book.name}}</td>
+    <td *ngIf="!book.read"><button (click)="readAgain(i)">Read Again</button></td>
   </tr>
 </table>
+<a routerLink="/new-books">Reading list</a>

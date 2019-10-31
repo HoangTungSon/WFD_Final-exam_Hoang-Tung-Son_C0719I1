@@ -1,9 +1,14 @@
-<table>
-  <tr>
-    <td><a href="new-books">Reading List</a></td>
-  </tr>
-  <tr>
-    <td><a href="read-books">Complete Book</a></td>
-  </tr>
-</table>
-<router-outlet></router-outlet>
+<div *ngIf="check === true">
+  <h2>My Awesome Reading List</h2>
+  <table>
+    <tr>
+      <td><a routerLink="new-books"  (click)="check = false">Reading List</a></td>
+      <td></td>
+      <td><a routerLink="read-books" (click)="check = false">Complete Book</a></td>
+    </tr>
+  </table>
+</div>
+
+<div *ngIf="check === false">
+  <router-outlet></router-outlet>
+</div>

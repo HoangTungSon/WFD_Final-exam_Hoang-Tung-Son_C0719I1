@@ -14,7 +14,7 @@ export class BookService {
   constructor(private http: HttpClient) {
   }
 
-  getBook(count = 4): Observable<IBook[]> {
+  getBook(count = 10): Observable<IBook[]> {
     return this.http.get<IBook[]>(this.API_URL).pipe(
       map(response => response.filter((book, i) => i < count))
     );
