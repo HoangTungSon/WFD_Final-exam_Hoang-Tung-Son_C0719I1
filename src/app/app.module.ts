@@ -6,6 +6,7 @@ import { SinglePageComponent } from './single-page/single-page.component';
 import {HttpClientModule} from '@angular/common/http';
 import {ReactiveFormsModule} from '@angular/forms';
 import { ReadPageComponent } from './read-page/read-page.component';
+import {AppRoutingModule} from './app-routing/app-routing.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,9 @@ import { ReadPageComponent } from './read-page/read-page.component';
   imports: [
     BrowserModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AppRoutingModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

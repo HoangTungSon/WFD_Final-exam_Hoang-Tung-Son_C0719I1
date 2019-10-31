@@ -1,1 +1,7 @@
-<p>read-page works!</p>
+<table>
+  <tr>Book have been read</tr>
+  <tr *ngFor="let book of bookList; index as i" [class.completed]="book.read" >
+    <td>{{book.name}}</td>
+    <td><button (click)="readAgain(i)">Read Again</button></td>
+  </tr>
+</table>

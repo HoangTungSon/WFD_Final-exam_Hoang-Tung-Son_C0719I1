@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {BookService} from '../book.service';
 
 @Component({
   selector: 'app-read-page',
@@ -7,9 +8,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReadPageComponent implements OnInit {
 
-  constructor() { }
+  bookList: IBook[] = [];
+
+  constructor(private bookService: BookService) {
+  }
 
   ngOnInit() {
+    this.bookService.getBook().subscribe(next => {
+      this.bookList = next;
+    }, error => {
+      console.log(error);
+    }, () => {
+      console.log('complete');
+    });
+  }
+
+  readAgain(i) {
+    const book = this.bookList[i];
+    this.bookService.deletebook(book.id).subscribe(() => {
+      this.bookList = this.bookList.filter(t => t.id !== book.id);
+    });
   }
 
 }
