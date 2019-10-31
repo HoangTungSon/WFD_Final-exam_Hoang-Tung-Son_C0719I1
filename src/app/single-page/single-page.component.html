@@ -3,11 +3,11 @@
   <tr align="middle">Reading List</tr>
   <tr *ngFor="let book of bookList; index as i" [class.completed]="book.read">
     <td *ngIf="book.read">{{book.name}}</td>
-    <td *ngIf="book.read"><button (click)="read(i)">Read Again</button></td>
+    <td *ngIf="book.read"><button (click)="read(i)">Complete</button></td>
   </tr>
   <tr>
     <td><input type="text" [formControl]="inputControl"></td>
-    <td><button (click)="addBook()">Add</button></td>
+    <td><button (click)="addBook()">Add new book</button></td>
   </tr>
 </table>
 <a routerLink="/read-books">Completed reading list</a>
